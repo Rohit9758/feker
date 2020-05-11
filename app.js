@@ -14,7 +14,7 @@ mongoose.Promise = global.Promise;
 
 // connecting mongo
 mongoose.connect(
-    "mongodb://localhost:27017/userdb", { useNewUrlParser: true, useUnifiedTopology: true  }
+    process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true  }
 );
 
 // When successfully connected
@@ -79,7 +79,6 @@ app.use((error, req, res, next) => {
 app.set('port', process.env.PORT || 9001);
 
 try {
-    console.log("here ")
     app.listen(app.get('port'), function () {
         console.log('Listening on port 9001...');
     })

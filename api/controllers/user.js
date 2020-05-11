@@ -10,7 +10,7 @@ exports.user_signup = (req, res, next) => {
     .then(user => {
       if (user.length >= 1) {
         return res.status(409).json({
-          message: "Mail exists"
+          message: "email already exists"
         });
       } else {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -29,7 +29,7 @@ exports.user_signup = (req, res, next) => {
               .then(result => {
                 console.log(result);
                 res.status(201).json({
-                  message: "User created"
+                  message: "User created Successfully"
                 });
               })
               .catch(err => {
@@ -71,7 +71,7 @@ exports.user_login = (req, res, next) => {
             }
           );
           return res.status(200).json({
-            message: "Auth successful",
+            message: "Login successful",
             token: token
           });
         }
